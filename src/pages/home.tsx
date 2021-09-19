@@ -14,7 +14,6 @@ export default function Home() {
       <Header />
       <S.Container>
         <Chart />
-        <HeaderDate />
         <Calendar />
         <Table />
         <Modal />
