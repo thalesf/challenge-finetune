@@ -30,7 +30,7 @@ interface Props {
   handleClose: () => void;
 }
 const FormAddItem: React.FC<Props> = ({ handleClose }: Props) => {
-  const { addNewItem, listItem } = useList();
+  const { addNewItem } = useList();
   const [id, setId] = useState(1);
 
   const formik = useFormik({

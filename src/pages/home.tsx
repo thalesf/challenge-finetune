@@ -15,10 +15,10 @@ export default function Home() {
       <S.Container>
         <Chart />
         <HeaderDate />
+        <Calendar />
+        <Table />
+        <Modal />
       </S.Container>
-      <Calendar />
-      <Table />
-      <Modal />
     </ItemListProvider>
   );
 }

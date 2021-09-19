@@ -18,10 +18,9 @@ export const ItemListContext = createContext({} as ItemListData);
 export const ItemListProvider: React.FC = ({ children }) => {
   const [listItem, setListItem] = useState<ListItem[]>([]);
   const [filteredItems, setFilteredItems] = useState<ListItem[]>([]);
-  const [selectedDate, setSelectedDate] = useState(new Date().toISOString());
+  const [selectedDate, setSelectedDate] = useState("");
 
   const addNewItem = useCallback((item: ListItem) => {
-    console.log('ADD NEW ITEM', item)
     setListItem((state) => [...state, item]);
   }, []);
 
@@ -30,10 +29,13 @@ export const ItemListProvider: React.FC = ({ children }) => {
       const removeItem = listItem.filter((remove: ListItem) => {
         return remove.id !== item;
       });
-
+      const removeFromFiltered = filteredItems.filter((remove: ListItem) => {
+        return remove.id !== item;
+      });
       setListItem(removeItem);
+      setFilteredItems(removeFromFiltered);
     },
-    [listItem]
+    [listItem, filteredItems]
   );
 
   const handleFilterByDate = useCallback(
@@ -44,14 +46,9 @@ export const ItemListProvider: React.FC = ({ children }) => {
     [listItem]
   );
 
-  const handleSelectedDate = useCallback(
-    (date: Date) => {
-      setSelectedDate(date.toISOString());
-    },
-    []
-  );
-
-  console.log('INSIDE ', selectedDate)
+  const handleSelectedDate = useCallback((date: Date) => {
+    setSelectedDate(date.toISOString());
+  }, []);
 
   return (
     <ItemListContext.Provider

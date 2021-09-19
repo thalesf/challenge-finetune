@@ -30,7 +30,7 @@ const ModalItem: React.FC = () => {
         </S.Background>
       </Modal>
 
-      <Fab color="primary" aria-label="add" onClick={handleOpen}>
+      <Fab sx={{ background: "#072acd", color: '#fff'}} aria-label="add" onClick={handleOpen}>
         <AddIcon />
       </Fab>
     </S.Container>

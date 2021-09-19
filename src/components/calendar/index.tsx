@@ -7,7 +7,6 @@ import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 import { useList } from "../../hooks/useList";
 
 export default function MaterialUIPickers() {
-  //   const [value, setValue] = useState(new Date().toISOString());
 
   const { selectedDate, handleSelectedDate, handleFilterByDate } = useList();
   const handleChange = (newValue: any) => {
