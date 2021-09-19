@@ -18,7 +18,7 @@ export const ItemListContext = createContext({} as ItemListData);
 export const ItemListProvider: React.FC = ({ children }) => {
   const [listItem, setListItem] = useState<ListItem[]>([]);
   const [filteredItems, setFilteredItems] = useState<ListItem[]>([]);
-  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedDate, setSelectedDate] = useState(new Date().toISOString());
 
   const addNewItem = useCallback((item: ListItem) => {
     setListItem((state) => [...state, item]);
