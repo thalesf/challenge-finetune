@@ -1,8 +1,9 @@
 export interface ListItem {
-  // date: string;
+  date: string;
   name: string;
   amount: number;
   type: number;
+  id: any;
 }
 
 export interface ListItemResponse {
