@@ -8,6 +8,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { ListItem } from "../../types/list";
 import { useList } from "../../hooks/useList";
 import { isEqual, getYear, getMonth, getDate } from "date-fns";
@@ -38,8 +39,7 @@ export default function CustomizedTables() {
   const { listItem, selectedDate, filteredItems, deleteItem } = useList();
 
   const handleDelete = (e: any) => {
-    console.log("DELETE", e.target.dataset.value);
-    deleteItem(parseInt(e.target.dataset.value));
+    deleteItem(parseInt(e.currentTarget.dataset.value));
   };
 
   console.log("FILTERED DELETE", filteredItems);
@@ -71,13 +71,9 @@ export default function CustomizedTables() {
                   <StyledTableCell align="right">{row.amount}</StyledTableCell>
                   <StyledTableCell align="right">{row.type}</StyledTableCell>
                   <StyledTableCell align="right">
-                    <Button
-                      variant="contained"
-                      data-value={row.id}
-                      onClick={handleDelete}
-                    >
-                      Deletar
-                    </Button>
+                    <div style={{ cursor: 'pointer'}} data-value={row.id} onClick={handleDelete}>
+                      <DeleteIcon />
+                    </div>
                   </StyledTableCell>
                 </StyledTableRow>
               );
@@ -92,13 +88,9 @@ export default function CustomizedTables() {
                   <StyledTableCell align="right">{row.amount}</StyledTableCell>
                   <StyledTableCell align="right">{row.type}</StyledTableCell>
                   <StyledTableCell align="right">
-                    <Button
-                      variant="contained"
-                      data-value={row.id}
-                      onClick={handleDelete}
-                    >
-                      Deletar
-                    </Button>
+                    <div style={{ cursor: 'pointer'}} data-value={row.id} onClick={handleDelete}>
+                      <DeleteIcon />
+                    </div>
                   </StyledTableCell>
                 </StyledTableRow>
               );
