@@ -1,6 +1,6 @@
 import { createContext } from "use-context-selector";
 import { useCallback, useState } from "react";
-import { ListItem } from "../types/list";
+import { ListItem, ListItemResponse } from "../types/list";
 
 export interface ItemListData {
   listItem: ListItem[];
@@ -18,7 +18,7 @@ export const ItemListProvider: React.FC = ({ children }) => {
   }, []);
 
   const deleteItem = useCallback((item: number) => {
-    const removeItem = listItem.filter((remove: ListItem) => {
+    const removeItem = listItem.filter((remove: any) => {
       return remove.id !== item;
     });
     setListItem(removeItem);
