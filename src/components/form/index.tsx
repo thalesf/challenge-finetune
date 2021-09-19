@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import {
-  Fab,
-  Modal,
   Grid,
   Typography,
-  // TextField,
+  TextField,
   InputLabel,
   Button,
   FormControl,
@@ -16,8 +14,8 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { Close as CloseIcon } from "@mui/icons-material";
 import { useList } from "../../hooks/useList";
-import TextField from "@material-ui/core/TextField";
 import { ItemType } from "../../types/list";
+import * as S from "./styles";
 
 const validationSchema = yup.object({
   name: yup.string().required("Name is required"),
@@ -29,7 +27,6 @@ const validationSchema = yup.object({
 });
 
 export default function FormAddItem() {
-  const [age, setAge] = React.useState("");
   const { addNewItem } = useList();
   const [id, setId] = useState(1);
 
@@ -41,7 +38,6 @@ export default function FormAddItem() {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      const formDate = new Date();
       setId((id) => id + 1);
       addNewItem({
         date: `2021-09-1${id}T17:52:40.116Z`,
@@ -52,7 +48,7 @@ export default function FormAddItem() {
       });
     },
   });
-  console.log('ID', id)
+  console.log("ID", id);
 
   const handleChangeType = (e: any) => {
     // setAge(event.target.value);
@@ -75,10 +71,12 @@ export default function FormAddItem() {
           p: 4,
         }}
       >
-        <CloseIcon />
+        <S.CloseIconContainer>
+          <CloseIcon />
+        </S.CloseIconContainer>
 
         <Typography>Register Item</Typography>
-        <FormControl sx={{ m: 1, minWidth: 200 }}>
+        <FormControl sx={{ mt: 3, minWidth: 200 }}>
           <TextField
             id="name"
             label="Name"
@@ -91,7 +89,7 @@ export default function FormAddItem() {
           />
         </FormControl>
 
-        <FormControl sx={{ m: 2, minWidth: 200 }}>
+        <FormControl sx={{ mt: 3, minWidth: 200 }}>
           <TextField
             id="amount"
             label="Amount"
@@ -105,11 +103,11 @@ export default function FormAddItem() {
           />
         </FormControl>
 
-        <FormControl sx={{ m: 2, minWidth: 200 }}>
+        <FormControl sx={{ mt: 3, minWidth: 200 }}>
           <InputLabel id="demo-simple-select-helper-label">Type</InputLabel>
           <Select
             id="type"
-            value={age}
+            value={id}
             label="Type"
             onChange={handleChangeType}
           >
@@ -119,9 +117,11 @@ export default function FormAddItem() {
           </Select>
           <FormHelperText>Item Type</FormHelperText>
         </FormControl>
-        <Button variant="contained" type="submit">
-          Cadastrar
-        </Button>
+        <FormControl sx={{ mt: 3, minWidth: 200 }}>
+          <Button variant="contained" type="submit">
+            Cadastrar
+          </Button>
+        </FormControl>
       </Grid>
     </form>
   );
