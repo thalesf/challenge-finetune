@@ -107,8 +107,8 @@ const FormAddItem: React.FC<Props> = ({ handleClose }: Props) => {
         error={formik.touched.type && Boolean(formik.errors.type)}
       >
         <InputLabel id="type">Type</InputLabel>
-        <Select id="type" value={0} label="Type" onChange={handleChangeType}>
-          <MenuItem value={0} disabled>Select the type</MenuItem>
+        <Select id="type" value={formik.values.type} label="Type" onChange={handleChangeType}>
+          <MenuItem value={0} disabled>Type</MenuItem>
           <MenuItem value={ItemType.Protein}>Protein</MenuItem>
           <MenuItem value={ItemType.Fat}>Fat</MenuItem>
           <MenuItem value={ItemType.Carbohydrate}>Carbohydrate</MenuItem>

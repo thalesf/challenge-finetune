@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -9,7 +9,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { ListItem } from "../../types/list";
+import { ItemType, ListItem } from "../../types/list";
 import { useList } from "../../hooks/useList";
 import { isEqual, getYear, getMonth, getDate } from "date-fns";
 
@@ -44,6 +44,17 @@ export default function CustomizedTables() {
 
   console.log("FILTERED DELETE", filteredItems);
 
+  const setTypeName = (type: number) => {
+    switch (type) {
+      case ItemType.Protein:
+        return "Protein";
+      case ItemType.Fat:
+        return "Fat";
+      default:
+        return "Carbohydrate";
+    }
+  };
+
   return (
     <TableContainer
       sx={{
@@ -69,9 +80,15 @@ export default function CustomizedTables() {
                     {row.name}
                   </StyledTableCell>
                   <StyledTableCell align="right">{row.amount}</StyledTableCell>
-                  <StyledTableCell align="right">{row.type}</StyledTableCell>
                   <StyledTableCell align="right">
-                    <div style={{ cursor: 'pointer'}} data-value={row.id} onClick={handleDelete}>
+                    {setTypeName(row.type)}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    <div
+                      style={{ cursor: "pointer" }}
+                      data-value={row.id}
+                      onClick={handleDelete}
+                    >
                       <DeleteIcon />
                     </div>
                   </StyledTableCell>
@@ -86,9 +103,15 @@ export default function CustomizedTables() {
                     {row.name}
                   </StyledTableCell>
                   <StyledTableCell align="right">{row.amount}</StyledTableCell>
-                  <StyledTableCell align="right">{row.type}</StyledTableCell>
                   <StyledTableCell align="right">
-                    <div style={{ cursor: 'pointer'}} data-value={row.id} onClick={handleDelete}>
+                    {setTypeName(row.type)}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    <div
+                      style={{ cursor: "pointer" }}
+                      data-value={row.id}
+                      onClick={handleDelete}
+                    >
                       <DeleteIcon />
                     </div>
                   </StyledTableCell>
