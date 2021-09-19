@@ -16,9 +16,16 @@ test("should return quantity of items by type", () => {
       type: 2,
       id: 2,
     },
+    {
+      date: "2021-09-18T22:58:23.383Z",
+      name: "Beans",
+      amount: 100,
+      type: 2,
+      id: 3,
+    },
   ];
   const filtered = filterByType(mockItemList, 1);
-  expect(filtered).toEqual([mockItemList[0]]);
+  expect(filtered).toBe(1)
 });
 
 test("should return an empty array when list item is not valid", () => {
