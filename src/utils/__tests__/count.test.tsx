@@ -18,5 +18,5 @@ test("should return quantity of items by type", () => {
     },
   ];
   const filtered = filterByType(mockItemList, 1);
-  expect(filtered).toEqual(mockItemList[1]);
+  expect(filtered).toEqual([mockItemList[0]]);
 });
