@@ -10,6 +10,7 @@ import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import { mockItemList } from "../../mocks/listItem";
 import { ListItem } from "../../types/list";
+import { useList } from "../../hooks/useList";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -32,6 +33,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export default function CustomizedTables() {
+ const {listItem } = useList();
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -44,7 +46,7 @@ export default function CustomizedTables() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {mockItemList.map((row: ListItem) => (
+          {listItem.map((row: ListItem) => (
             <StyledTableRow key={row.name}>
               <StyledTableCell component="th" scope="row">
                 {row.name}
