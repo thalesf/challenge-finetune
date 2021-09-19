@@ -18,8 +18,8 @@ test("should return a list of elements by date", () => {
     },
   ];
 
-  const date = "2021-09-18T00:00:00.000Z";
+  const filteredDate = { date: "2021-09-18T00:00:00.000Z" };
 
-  const result = filterByDate(mockItemList, date);
-  expect(result).toBe(date);
+  const result = filterByDate(mockItemList, "2021-09-18T00:00:00.000Z");
+  expect(result[0]).toMatchObject(filteredDate)
 });
