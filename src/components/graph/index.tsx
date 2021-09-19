@@ -5,9 +5,8 @@ import { ItemType } from "../../types/list";
 import { filterByType } from "../../utils/count";
 
 export default function Chart() {
-  const { listItem } = useList();
-
-  console.log("LIST ITEM", listItem);
+  const { selectedDate, filteredItems, listItem } = useList();
+ 
   return (
     <div>
       <Pie
@@ -17,11 +16,16 @@ export default function Chart() {
 
           datasets: [
             {
-              label: "My First Dataset",
               data: [
-                filterByType(listItem, ItemType.Protein),
-                filterByType(listItem, ItemType.Fat),
-                filterByType(listItem, ItemType.Carbohydrate),
+                selectedDate
+                  ? filterByType(filteredItems, ItemType.Protein)
+                  : filterByType(listItem, ItemType.Protein),
+                selectedDate
+                  ? filterByType(filteredItems, ItemType.Fat)
+                  : filterByType(listItem, ItemType.Fat),
+                selectedDate
+                  ? filterByType(filteredItems, ItemType.Carbohydrate)
+                  : filterByType(listItem, ItemType.Carbohydrate),
               ],
               backgroundColor: [
                 "rgb(255, 99, 132)",

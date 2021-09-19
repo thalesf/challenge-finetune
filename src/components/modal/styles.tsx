@@ -1,7 +1,7 @@
 import { styled } from "@mui/system";
 
 const Container = styled("div")({
-  position: "absolute",
+  position: "fixed",
   bottom: 30,
   right: 30,
 });

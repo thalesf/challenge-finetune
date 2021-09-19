@@ -12,6 +12,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { ItemType, ListItem } from "../../types/list";
 import { useList } from "../../hooks/useList";
 import { isEqual, getYear, getMonth, getDate } from "date-fns";
+import { Typography } from "@mui/material";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {

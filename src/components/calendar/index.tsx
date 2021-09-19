@@ -21,7 +21,7 @@ export default function MaterialUIPickers() {
           <DesktopDatePicker
             label="Choose a date"
             inputFormat="MM/dd/yyyy"
-            value={selectedDate}
+            value={!selectedDate ? new Date().toISOString(): selectedDate}
             onChange={handleChange}
             renderInput={(params) => <TextField {...params} />}
           />
