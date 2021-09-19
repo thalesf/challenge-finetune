@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Grid,
   Typography,
@@ -26,8 +26,11 @@ const validationSchema = yup.object({
   type: yup.number().required("Type is required"),
 });
 
-export default function FormAddItem() {
-  const { addNewItem } = useList();
+interface Props {
+  handleClose: () => void;
+}
+const FormAddItem: React.FC<Props> = ({ handleClose }: Props) => {
+  const { addNewItem, listItem } = useList();
   const [id, setId] = useState(1);
 
   const formik = useFormik({
@@ -38,9 +41,11 @@ export default function FormAddItem() {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
+      console.log("VALUES", values);
+      const d = new Date();
       setId((id) => id + 1);
       addNewItem({
-        date: `2021-09-1${id}T17:52:40.116Z`,
+        date: d.toISOString(),
         name: values.name,
         amount: parseInt(values.amount),
         type: parseInt(values.type),
@@ -48,7 +53,7 @@ export default function FormAddItem() {
       });
     },
   });
-  console.log("ID", id);
+  console.log("LIST ITEM FORM", formik.errors);
 
   const handleChangeType = (e: any) => {
     // setAge(event.target.value);
@@ -58,71 +63,72 @@ export default function FormAddItem() {
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      {console.log("FORMIK", formik.values)}
-      <Grid
+      <S.CloseIconContainer onClick={handleClose}>
+        <CloseIcon />
+      </S.CloseIconContainer>
+
+      <Typography
+        variant="h5"
         sx={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          width: 400,
-          bgcolor: "background.paper",
-          boxShadow: 24,
-          p: 4,
+          fontWeight: "bold",
         }}
       >
-        <S.CloseIconContainer>
-          <CloseIcon />
-        </S.CloseIconContainer>
+        Register Item
+      </Typography>
+      <FormControl sx={{ mt: 3, minWidth: 300 }}>
+        <TextField
+          id="name"
+          label="Name"
+          variant="outlined"
+          name="name"
+          value={formik.values.name}
+          onChange={formik.handleChange}
+          error={formik.touched.name && Boolean(formik.errors.name)}
+          helperText={formik.touched.name && formik.errors.name}
+        />
+      </FormControl>
 
-        <Typography>Register Item</Typography>
-        <FormControl sx={{ mt: 3, minWidth: 200 }}>
-          <TextField
-            id="name"
-            label="Name"
-            variant="outlined"
-            name="name"
-            value={formik.values.name}
-            onChange={formik.handleChange}
-            error={formik.touched.name && Boolean(formik.errors.name)}
-            helperText={formik.touched.name && formik.errors.name}
-          />
-        </FormControl>
+      <FormControl sx={{ mt: 3, minWidth: 300 }}>
+        <TextField
+          id="amount"
+          label="Amount"
+          variant="outlined"
+          placeholder="Amount"
+          name="amount"
+          value={formik.values.amount}
+          onChange={formik.handleChange}
+          error={formik.touched.amount && Boolean(formik.errors.amount)}
+          helperText={formik.touched.amount && formik.errors.amount}
+        />
+      </FormControl>
 
-        <FormControl sx={{ mt: 3, minWidth: 200 }}>
-          <TextField
-            id="amount"
-            label="Amount"
-            variant="outlined"
-            placeholder="Amount"
-            name="amount"
-            value={formik.values.amount}
-            onChange={formik.handleChange}
-            error={formik.touched.amount && Boolean(formik.errors.amount)}
-            helperText={formik.touched.amount && formik.errors.amount}
-          />
-        </FormControl>
-
-        <FormControl sx={{ mt: 3, minWidth: 200 }}>
-          <InputLabel id="demo-simple-select-helper-label">Type</InputLabel>
-          <Select
-            id="type"
-            value={id}
-            label="Type"
-            onChange={handleChangeType}
-          >
-            <MenuItem value={ItemType.Protein}>Protein</MenuItem>
-            <MenuItem value={ItemType.Fat}>Fat</MenuItem>
-            <MenuItem value={ItemType.Carbohydrate}>Carbohydrate</MenuItem>
-          </Select>
-          <FormHelperText>Item Type</FormHelperText>
-        </FormControl>
-        <FormControl sx={{ mt: 3, minWidth: 200 }}>
-          <Button variant="contained" type="submit">
-            Cadastrar
-          </Button>
-        </FormControl>
-      </Grid>
+      <FormControl
+        sx={{ mt: 3, minWidth: 300 }}
+        error={formik.touched.type && Boolean(formik.errors.type)}
+      >
+        <InputLabel id="type">Type</InputLabel>
+        <Select id="type" value={0} label="Type" onChange={handleChangeType}>
+          <MenuItem value={0} disabled>Select the type</MenuItem>
+          <MenuItem value={ItemType.Protein}>Protein</MenuItem>
+          <MenuItem value={ItemType.Fat}>Fat</MenuItem>
+          <MenuItem value={ItemType.Carbohydrate}>Carbohydrate</MenuItem>
+        </Select>
+        <FormHelperText>Item Type</FormHelperText>
+      </FormControl>
+      <FormControl sx={{ mt: 3, minWidth: 300 }}>
+        <Button
+          variant="contained"
+          type="submit"
+          sx={{
+            height: 50,
+            fontWeight: "bold",
+            background: "#072acd",
+          }}
+        >
+          Cadastrar
+        </Button>
+      </FormControl>
     </form>
   );
-}
+};
+export default FormAddItem;

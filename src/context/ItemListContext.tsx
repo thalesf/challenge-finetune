@@ -21,6 +21,7 @@ export const ItemListProvider: React.FC = ({ children }) => {
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString());
 
   const addNewItem = useCallback((item: ListItem) => {
+    console.log('ADD NEW ITEM', item)
     setListItem((state) => [...state, item]);
   }, []);
 

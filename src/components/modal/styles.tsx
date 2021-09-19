@@ -10,7 +10,4 @@ const Background = styled("div")({
   background: "#fff",
 });
 
-export {
-  Container,
-  Background,
-}
+export { Container, Background };

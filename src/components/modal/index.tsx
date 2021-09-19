@@ -1,8 +1,8 @@
 import React from "react";
 import FormAddItem from "../form";
-import { Fab, Modal } from "@mui/material";
+import { Fab, Modal, Box } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import * as S from './styles';
+import * as S from "./styles";
 
 const ModalItem: React.FC = () => {
   const [open, setOpen] = React.useState(false);
@@ -13,7 +13,20 @@ const ModalItem: React.FC = () => {
     <S.Container>
       <Modal open={open} onClose={handleClose}>
         <S.Background>
-          <FormAddItem />
+          <Box
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: 400,
+              bgcolor: "background.paper",
+              boxShadow: 24,
+              p: 4,
+            }}
+          >
+            <FormAddItem handleClose={handleClose} />
+          </Box>
         </S.Background>
       </Modal>
 

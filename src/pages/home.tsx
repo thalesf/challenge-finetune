@@ -5,22 +5,20 @@ import Chart from "../components/graph";
 import Header from "../components/header";
 import HeaderDate from "../components/header/date";
 import Calendar from "../components/calendar";
-import Modal from '../components/modal';
+import Modal from "../components/modal";
+import * as S from "./styles";
 
 export default function Home() {
   return (
     <ItemListProvider>
       <Header />
-      <br />
-      <br />
-      <Chart />
-
-      <HeaderDate />
+      <S.Container>
+        <Chart />
+        <HeaderDate />
+      </S.Container>
       <Calendar />
-      <Modal />
-      <br />
-      <br />
       <Table />
+      <Modal />
     </ItemListProvider>
   );
 }
