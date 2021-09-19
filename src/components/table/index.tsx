@@ -11,6 +11,7 @@ import Button from "@mui/material/Button";
 import { mockItemList } from "../../mocks/listItem";
 import { ListItem } from "../../types/list";
 import { useList } from "../../hooks/useList";
+import { filterByDate } from "../../utils/filter";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -33,11 +34,12 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export default function CustomizedTables() {
- const {listItem, deleteItem } = useList();
+  const { filteredItems, deleteItem } = useList();
 
- const handleDelete = (e:any) => {
-  deleteItem(parseInt(e.target.dataset.value))
- }
+  const handleDelete = (e: any) => {
+    deleteItem(parseInt(e.target.dataset.value));
+  };
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -50,7 +52,8 @@ export default function CustomizedTables() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {listItem.map((row: ListItem) => (
+          {console.log('FILTERED ITEMS', filteredItems)}
+          {filteredItems.map((row: ListItem) => (
             <StyledTableRow key={row.id}>
               <StyledTableCell component="th" scope="row">
                 {row.name}
@@ -58,7 +61,13 @@ export default function CustomizedTables() {
               <StyledTableCell align="right">{row.amount}</StyledTableCell>
               <StyledTableCell align="right">{row.type}</StyledTableCell>
               <StyledTableCell align="right">
-                <Button variant="contained" data-value={row.id} onClick={handleDelete}>Deletar</Button>
+                <Button
+                  variant="contained"
+                  data-value={row.id}
+                  onClick={handleDelete}
+                >
+                  Deletar
+                </Button>
               </StyledTableCell>
             </StyledTableRow>
           ))}

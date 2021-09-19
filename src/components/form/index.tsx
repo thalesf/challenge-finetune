@@ -41,9 +41,10 @@ export default function FormAddItem() {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
+      const formDate = new Date();
       setId((id) => id + 1);
       addNewItem({
-        date: "",
+        date: `2021-09-1${id}T17:52:40.116Z`,
         name: values.name,
         amount: parseInt(values.amount),
         type: parseInt(values.type),

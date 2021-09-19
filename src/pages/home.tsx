@@ -4,8 +4,10 @@ import AddIcon from "@mui/icons-material/Add";
 import { ItemListProvider } from "../context/ItemListContext";
 import Table from "../components/table";
 import Chart from "../components/graph";
-import Header from "../header";
+import Header from "../components/header";
+import HeaderDate from '../components/header/date';
 import FormAddItem from "../components/form";
+import Calendar from '../components/calendar'
 
 export default function Home() {
   const [open, setOpen] = React.useState(false);
@@ -18,7 +20,14 @@ export default function Home() {
       <br />
       <br />
       <Chart />
+
+
+     <HeaderDate />
+      <Calendar />
+      <br />
+      <br />
       <Table />
+      
       <Modal open={open} onClose={handleClose}>
         <div
           style={{
