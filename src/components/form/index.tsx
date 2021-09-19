@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Fab,
   Modal,
@@ -31,6 +31,7 @@ const validationSchema = yup.object({
 export default function FormAddItem() {
   const [age, setAge] = React.useState("");
   const { addNewItem } = useList();
+  const [id, setId] = useState(1);
 
   const formik = useFormik({
     initialValues: {
@@ -40,17 +41,21 @@ export default function FormAddItem() {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
+      setId((id) => id + 1);
       addNewItem({
+        date: "",
         name: values.name,
         amount: parseInt(values.amount),
-        type: parseInt(values.type)
+        type: parseInt(values.type),
+        id,
       });
     },
   });
+  console.log('ID', id)
 
   const handleChangeType = (e: any) => {
     // setAge(event.target.value);
-    console.log('E',e)
+    console.log("E", e);
     formik.setFieldValue("type", e.target.value);
   };
 
