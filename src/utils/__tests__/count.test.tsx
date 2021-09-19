@@ -20,3 +20,9 @@ test("should return quantity of items by type", () => {
   const filtered = filterByType(mockItemList, 1);
   expect(filtered).toEqual([mockItemList[0]]);
 });
+
+test("should return an empty array when list item is not valid", () => {
+  const mockItemList = [{ id: 2, another_data: 123 }];
+  const filtered = filterByType(mockItemList, 1);
+  expect(filtered).toEqual([]);
+});
