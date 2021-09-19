@@ -1,5 +1,5 @@
 import { filterByDate } from "../filter";
-import { isEqual } from "date-fns";
+
 test("should return a list of elements by date", () => {
   const mockItemList = [
     {
