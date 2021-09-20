@@ -28,6 +28,11 @@ This test has a lot of features on purpose, you should feel free to choose the o
        |___ utils               # Utilities functions
             |___tests__         # Utilities tests (react testing library)
 
+## Screenshot
+
+<img width="1452" alt="Captura de Tela 2021-09-20 às 15 53 03" src="https://user-images.githubusercontent.com/11466066/134058302-c937e83f-f46e-45bc-9399-581f30f54fa8.png">
+
+
 ## Stack
 
 **Typrescript** - https://www.typescriptlang.org/ <br />
