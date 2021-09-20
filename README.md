@@ -28,6 +28,13 @@ This test has a lot of features on purpose, you should feel free to choose the o
        |___ utils               # Utilities functions
             |___tests__         # Utilities tests (react testing library)
 
+## Stack
+
+**Typrescript** - https://www.typescriptlang.org/ <br />
+**Material UI** - https://mui.com/ <br />
+**Cypress** - https://www.cypress.io/ **(Integration tests)** <br />
+**React Testing Library** - https://testing-library.com/ **(Unit tests)** <br />
+**Conventional Commits** - http://conventionalcommits.org/ **(commits specification)**<br />
 
 ## :zap: Usage
 
