@@ -63,7 +63,7 @@ const FormAddItem: React.FC<Props> = ({ handleClose }: Props) => {
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <S.CloseIconContainer onClick={handleClose}>
+      <S.CloseIconContainer onClick={handleClose} data-testid="close-icon">
         <CloseIcon />
       </S.CloseIconContainer>
 
@@ -85,6 +85,7 @@ const FormAddItem: React.FC<Props> = ({ handleClose }: Props) => {
           onChange={formik.handleChange}
           error={formik.touched.name && Boolean(formik.errors.name)}
           helperText={formik.touched.name && formik.errors.name}
+          data-testid="name"
         />
       </FormControl>
 
@@ -99,6 +100,7 @@ const FormAddItem: React.FC<Props> = ({ handleClose }: Props) => {
           onChange={formik.handleChange}
           error={formik.touched.amount && Boolean(formik.errors.amount)}
           helperText={formik.touched.amount && formik.errors.amount}
+          data-testid="amount"
         />
       </FormControl>
 
@@ -107,17 +109,32 @@ const FormAddItem: React.FC<Props> = ({ handleClose }: Props) => {
         error={formik.touched.type && Boolean(formik.errors.type)}
       >
         <InputLabel id="type">Type</InputLabel>
-        <Select id="type" value={formik.values.type} label="Type" onChange={handleChangeType}>
-          <MenuItem value={0} disabled>Type</MenuItem>
-          <MenuItem value={ItemType.Protein}>Protein</MenuItem>
-          <MenuItem value={ItemType.Fat}>Fat</MenuItem>
-          <MenuItem value={ItemType.Carbohydrate}>Carbohydrate</MenuItem>
+        <Select
+          id="type"
+          value={formik.values.type}
+          label="Type"
+          data-testid="type"
+          onChange={handleChangeType}
+        >
+          <MenuItem value={0} disabled>
+            Type
+          </MenuItem>
+          <MenuItem value={ItemType.Protein} data-testid="type-protein">
+            Protein
+          </MenuItem>
+          <MenuItem value={ItemType.Fat} data-testid="type-fat">
+            Fat
+          </MenuItem>
+          <MenuItem value={ItemType.Carbohydrate} data-testid="type-carbohydrate">
+            Carbohydrate
+          </MenuItem>
         </Select>
         <FormHelperText>Item Type</FormHelperText>
       </FormControl>
       <FormControl sx={{ mt: 3, minWidth: 300 }}>
         <Button
           variant="contained"
+          data-testid="register-button"
           type="submit"
           sx={{
             height: 50,

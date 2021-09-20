@@ -72,7 +72,7 @@ export default function CustomizedTables() {
             <StyledTableCell align="right"></StyledTableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody data-testid="table-body-register">
           {!selectedDate &&
             listItem.map((row: ListItem) => {
               return (
