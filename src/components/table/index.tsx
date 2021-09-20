@@ -61,13 +61,12 @@ export default function RegisterTable() {
                     {setTypeName(row.type)}
                   </S.StyledTableCell>
                   <S.StyledTableCell align="right">
-                    <div
-                      style={{ cursor: "pointer" }}
+                    <S.DeleteIconContainer
                       data-value={row.id}
                       onClick={handleDelete}
                     >
                       <DeleteIcon />
-                    </div>
+                    </S.DeleteIconContainer>
                   </S.StyledTableCell>
                 </S.StyledTableRow>
               );
@@ -86,13 +85,12 @@ export default function RegisterTable() {
                     {setTypeName(row.type)}
                   </S.StyledTableCell>
                   <S.StyledTableCell align="right">
-                    <div
-                      style={{ cursor: "pointer" }}
+                    <S.DeleteIconContainer
                       data-value={row.id}
                       onClick={handleDelete}
                     >
                       <DeleteIcon />
-                    </div>
+                    </S.DeleteIconContainer>
                   </S.StyledTableCell>
                 </S.StyledTableRow>
               );

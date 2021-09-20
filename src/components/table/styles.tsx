@@ -21,4 +21,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-export { StyledTableCell, StyledTableRow}
+const DeleteIconContainer = styled("div")({
+  cursor: 'pointer',
+});
+
+export { StyledTableCell, StyledTableRow, DeleteIconContainer };
