@@ -13,6 +13,14 @@ describe('Home', () => {
     cy.contains('Choose a date').should('be.visible')
   })
 
+  it('should fail and show errors when submit an empty form', () => {
+    cy.getByTestId('add-new-button').click();
+    cy.getByTestId('register-button').click();
+    cy.contains(/Name is required/i).should('be.visible').should('have.length',1)
+    cy.contains(/Amount is required/i).should('be.visible').should('have.length', 1)
+    cy.contains(/Item type/i).should('be.visible').should('have.length',1)
+  });
+
   it('should create a new protein item', () => {
     cy.getByTestId('add-new-button').click();
     cy.getByTestId('name').type(faker.commerce.product());
