@@ -2,14 +2,11 @@ import { renderHook, act } from "@testing-library/react-hooks";
 import { useList } from "../useList";
 import { ItemListProvider } from "../../context/ItemListContext";
 import { mockItemList } from "../../mocks/listItem";
-import { cleanup } from "@testing-library/react";
 import { ListItem } from "../../types/list";
 
 // //Type 1 = Protein
 // //Type 2 = Fat
 // //Type 3 = Carbohydrate
-
-afterEach(cleanup);
 
 test("should add a new element to list", () => {
   const wrapper = ({ children }) => (
