@@ -1,6 +1,6 @@
 import React from "react";
 import FormAddItem from "../form";
-import { Fab, Modal, Box } from "@mui/material";
+import { Modal } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import * as S from "./styles";
 
@@ -12,22 +12,9 @@ const ModalItem: React.FC = () => {
   return (
     <S.Container>
       <Modal open={open} onClose={handleClose}>
-        <S.Background>
-          <Box
-            sx={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              width: 400,
-              bgcolor: "background.paper",
-              boxShadow: 24,
-              p: 4,
-            }}
-          >
-            <FormAddItem handleClose={handleClose} />
-          </Box>
-        </S.Background>
+        <S.ModalBox>
+          <FormAddItem handleClose={handleClose} />
+        </S.ModalBox>
       </Modal>
 
       <S.CustomFab
