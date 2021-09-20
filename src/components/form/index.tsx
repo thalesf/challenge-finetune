@@ -15,6 +15,7 @@ import { Close as CloseIcon } from "@mui/icons-material";
 import { useList } from "../../hooks/useList";
 import { ItemType } from "../../types/list";
 import * as S from "./styles";
+import PrimaryButton from "../button";
 
 const validationSchema = yup.object({
   name: yup.string().required("Name is required"),
@@ -40,7 +41,6 @@ const FormAddItem: React.FC<Props> = ({ handleClose }: Props) => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      console.log("VALUES", values);
       const d = new Date();
       setId((id) => id + 1);
       addNewItem({
@@ -95,6 +95,7 @@ const FormAddItem: React.FC<Props> = ({ handleClose }: Props) => {
           variant="outlined"
           placeholder="Amount"
           name="amount"
+          type="number"
           value={formik.values.amount}
           onChange={formik.handleChange}
           error={formik.touched.amount && Boolean(formik.errors.amount)}
@@ -124,25 +125,23 @@ const FormAddItem: React.FC<Props> = ({ handleClose }: Props) => {
           <MenuItem value={ItemType.Fat} data-testid="type-fat">
             Fat
           </MenuItem>
-          <MenuItem value={ItemType.Carbohydrate} data-testid="type-carbohydrate">
+          <MenuItem
+            value={ItemType.Carbohydrate}
+            data-testid="type-carbohydrate"
+          >
             Carbohydrate
           </MenuItem>
         </Select>
         <FormHelperText>Item Type</FormHelperText>
       </FormControl>
       <FormControl sx={{ mt: 3, minWidth: 320 }}>
-        <Button
+        <PrimaryButton
           variant="contained"
           data-testid="register-button"
           type="submit"
-          sx={{
-            height: 50,
-            fontWeight: "bold",
-            background: "#072acd",
-          }}
         >
           Cadastrar
-        </Button>
+        </PrimaryButton>
       </FormControl>
     </form>
   );
