@@ -1,12 +1,11 @@
 import React from "react";
-import Stack from "@mui/material/Stack";
-import TextField from "@mui/material/TextField";
+import { Stack, TextField } from "@mui/material";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import LocalizationProvider from "@mui/lab/LocalizationProvider";
-import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
+import { LocalizationProvider, DesktopDatePicker } from "@mui/lab";
+import * as S from "./styles";
 import { useList } from "../../hooks/useList";
 
-export default function MaterialUIPickers() {
+export default function CalendarPicker() {
   const { selectedDate, handleSelectedDate, handleFilterByDate } = useList();
   const handleChange = (newValue: any) => {
     handleSelectedDate(newValue);
@@ -14,20 +13,20 @@ export default function MaterialUIPickers() {
   };
 
   return (
-    <div style={{display: 'flex', justifyContent: 'flex-end'}}>
-    <div style={{ width: 300}} >
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <Stack spacing={3}>
-          <DesktopDatePicker
-            label="Choose a date"
-            inputFormat="MM/dd/yyyy"
-            value={!selectedDate ? new Date().toISOString(): selectedDate}
-            onChange={handleChange}
-            renderInput={(params) => <TextField {...params} />}
-          />
-        </Stack>
-      </LocalizationProvider>
-    </div>
-    </div>
+    <S.Container>
+      <S.Calendar>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <Stack spacing={3}>
+            <DesktopDatePicker
+              label="Choose a date"
+              inputFormat="MM/dd/yyyy"
+              value={!selectedDate ? new Date().toISOString() : selectedDate}
+              onChange={handleChange}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </Stack>
+        </LocalizationProvider>
+      </S.Calendar>
+    </S.Container>
   );
 }
