@@ -3,7 +3,6 @@ import {
   Typography,
   TextField,
   InputLabel,
-  Button,
   FormControl,
   MenuItem,
   Select,
@@ -52,11 +51,8 @@ const FormAddItem: React.FC<Props> = ({ handleClose }: Props) => {
       });
     },
   });
-  console.log("LIST ITEM FORM", formik.errors);
 
   const handleChangeType = (e: any) => {
-    // setAge(event.target.value);
-    console.log("E", e);
     formik.setFieldValue("type", e.target.value);
   };
 
