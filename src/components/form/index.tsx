@@ -74,7 +74,7 @@ const FormAddItem: React.FC<Props> = ({ handleClose }: Props) => {
       >
         Register Item
       </Typography>
-      <FormControl sx={{ mt: 3, minWidth: 300 }}>
+      <FormControl sx={{ mt: 3, minWidth: 320 }}>
         <TextField
           id="name"
           label="Name"
@@ -88,7 +88,7 @@ const FormAddItem: React.FC<Props> = ({ handleClose }: Props) => {
         />
       </FormControl>
 
-      <FormControl sx={{ mt: 3, minWidth: 300 }}>
+      <FormControl sx={{ mt: 3, minWidth: 320 }}>
         <TextField
           id="amount"
           label="Amount"
@@ -104,7 +104,7 @@ const FormAddItem: React.FC<Props> = ({ handleClose }: Props) => {
       </FormControl>
 
       <FormControl
-        sx={{ mt: 3, minWidth: 300 }}
+        sx={{ mt: 3, minWidth: 320 }}
         error={formik.touched.type && Boolean(formik.errors.type)}
       >
         <InputLabel id="type">Type</InputLabel>
@@ -130,7 +130,7 @@ const FormAddItem: React.FC<Props> = ({ handleClose }: Props) => {
         </Select>
         <FormHelperText>Item Type</FormHelperText>
       </FormControl>
-      <FormControl sx={{ mt: 3, minWidth: 300 }}>
+      <FormControl sx={{ mt: 3, minWidth: 320 }}>
         <Button
           variant="contained"
           data-testid="register-button"
