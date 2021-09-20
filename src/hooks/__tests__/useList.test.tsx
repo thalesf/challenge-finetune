@@ -1,7 +1,6 @@
 import { renderHook, act } from "@testing-library/react-hooks";
 import { useList } from "../useList";
 import { ItemListProvider } from "../../context/ItemListContext";
-import { ListItem } from "../../types/list";
 
 // //Type 1 = Protein
 // //Type 2 = Fat
@@ -30,20 +29,15 @@ test("should add a new element to list", () => {
   );
   const { result } = renderHook(() => useList(), { wrapper });
 
-  const newItem: ListItem = {
-    date: "2021-09-18T22:58:23.383Z",
-    name: "Potato",
-    amount: 100,
-    type: 1,
-    id: 2,
-  };
+  const newItem = mockItemList[0];
 
   act(() => {
     result.current.addNewItem(newItem);
   });
 
-  expect(result.current.listItem).toEqual([newItem]);
-  expect(result.current.listItem).toHaveLength(1)
+  expect(result.current.listItem).toEqual(expect.arrayContaining([
+    expect.objectContaining(newItem)
+  ]))
 });
 
 test("should delete element by id", () => {
@@ -62,6 +56,7 @@ test("should delete element by id", () => {
     result.current.deleteItem(1);
   });
 
-  expect(result.current.listItem).toEqual([mockItemList[1]]);
-  expect(result.current.listItem).toHaveLength(1)
+  expect(result.current.listItem).not.toEqual(expect.arrayContaining([
+    expect.not.objectContaining(mockItemList[0])
+  ]))
 });
