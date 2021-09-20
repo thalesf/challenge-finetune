@@ -1,6 +1,6 @@
 import React from "react";
 import Home from "./pages/home";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import CssBaseline from "@mui/material/CssBaseline";
 
 function App() {
   return (
