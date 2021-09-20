@@ -1,7 +1,8 @@
 import { createContext } from "use-context-selector";
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 import { ListItem } from "../types/list";
 import { filterByDate } from "../utils/filter";
+import { mockItemList } from "../mocks/listItem";
 
 export interface ItemListData {
   listItem: ListItem[];
@@ -19,6 +20,10 @@ export const ItemListProvider: React.FC = ({ children }) => {
   const [listItem, setListItem] = useState<ListItem[]>([]);
   const [filteredItems, setFilteredItems] = useState<ListItem[]>([]);
   const [selectedDate, setSelectedDate] = useState("");
+
+  useEffect(() => {
+      setListItem(mockItemList)
+  }, []);
 
   const addNewItem = useCallback((item: ListItem) => {
     setListItem((state) => [...state, item]);
