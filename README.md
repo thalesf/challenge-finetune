@@ -14,6 +14,46 @@ Create a web app where the user has a list of everything she eats and the amount
 :white_check_mark: 7 - The user can delete items from the list.<br />
 This test has a lot of features on purpose, you should feel free to choose the ones you think will make the most impact on the user and showcase your skills.<br />
 
+## Project details
+
+    .
+    ├── cypress                 # Automated tests(cypress)
+    ├── src                     # source code
+       |___ components          # application components
+       |___ context             # Contexts 
+       |___ hooks               # Hooks
+            |___tests__         # Hooks tests (react testing library)
+       |___ pages               # application pages
+            |___ home           # Initial Page
+       |___ utils               # Utilities functions
+            |___tests__         # Utilities tests (react testing library)
+
+
+## :zap: Usage
+
+### Use bash
+
+```bash
+$ git clone https://github.com/thalesf/challenge-finetune.git
+$ cd challenge-finetune
+$ npm install or yarn
+$ npm start or yarn start
+# visit http://localhost:3000
+```
+
+### Run tests
+```bash
+$ npm test or yarn test
+```
+### Run on browser
+```bash
+$ start the project(port 3000)
+$ run test:cypress
+$ choose the test
+```
+
+## Description
+
 ### Frontend Challenge
 Please use React or NextJS.
 There are no contains on libraries.
