@@ -21,10 +21,21 @@ describe('Home', () => {
     cy.contains(/Item type/i).should('be.visible').should('have.length',1)
   });
 
+  it.only('should show an error when amount provided is smaller than 1', () => {
+    cy.getByTestId('add-new-button').click();
+    cy.getByTestId('register-button').click();
+    cy.getByTestId('name').type(faker.commerce.product());
+    cy.getByTestId('amount').type('0');
+    cy.getByTestId('type').click();
+    cy.getByTestId('type-protein').click();
+    cy.getByTestId('register-button').click();
+    cy.contains(/Amount should be higher than 0/i).should('be.visible').should('have.length',1)
+  });
+
   it('should create a new protein item', () => {
     cy.getByTestId('add-new-button').click();
     cy.getByTestId('name').type(faker.commerce.product());
-    cy.getByTestId('amount').type(100);
+    cy.getByTestId('amount').type('100');
     cy.getByTestId('type').click();
     cy.getByTestId('type-protein').click();
     cy.getByTestId('register-button').click();
@@ -35,7 +46,7 @@ describe('Home', () => {
   it('should create a new fat item', () => {
     cy.getByTestId('add-new-button').click();
     cy.getByTestId('name').type(faker.commerce.product());
-    cy.getByTestId('amount').type(200);
+    cy.getByTestId('amount').type('200');
     cy.getByTestId('type').click();
     cy.getByTestId('type-fat').click();
     cy.getByTestId('register-button').click();
@@ -46,7 +57,7 @@ describe('Home', () => {
   it('should create a new carbohydrate item', () => {
     cy.getByTestId('add-new-button').click();
     cy.getByTestId('name').type(faker.commerce.product());
-    cy.getByTestId('amount').type(200);
+    cy.getByTestId('amount').type('200');
     cy.getByTestId('type').click();
     cy.getByTestId('type-carbohydrate').click();
     cy.getByTestId('register-button').click();
