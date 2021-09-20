@@ -5,7 +5,7 @@ describe('Home', () => {
     cy.visit('/');
   });
 
-  it.skip('should render with initial state', () => {
+  it('should render with initial state', () => {
     cy.getByTestId('add-new-button').should('be.visible');
     cy.contains('Name').should('be.visible')
     cy.contains('Amount').should('be.visible')
