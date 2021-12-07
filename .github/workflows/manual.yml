@@ -28,7 +28,7 @@ jobs:
     # Runs a single command using the runners shell
     - name: Send greeting
       env:
-         ENVIRONMENT: ENV  
+         ENVIRONMENT: DEV  
 #       run: echo "DISTRIBUTION ${{ secrets.DISTRIBUTION_ID_DEV }}"
 #       run: echo DISTRIBUTION ${{ secrets[format('DISTRIBUTION_ID_{0}', env.ENVIRONMENT)] }} BRANCH NAME $ENV
       run: echo DISTRIBUTION 2 ${{ secrets[format('DISTRIBUTION_ID_{0}', env.ENVIRONMENT)] }} BRANCH $ENV
