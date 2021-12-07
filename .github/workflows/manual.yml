@@ -21,4 +21,5 @@ jobs:
     steps:
     # Runs a single command using the runners shell
     - name: Send greeting
-      run: echo "DISTRIBUTION ${{ secrets.DISTRIBUTION_ID_DEV }}"
+#       run: echo "DISTRIBUTION ${{ secrets.DISTRIBUTION_ID_DEV }}"
+      run: echo DISTRIBUTION ${{ secrets[format('{0}_A', DEV)] }}
