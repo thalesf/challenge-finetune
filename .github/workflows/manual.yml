@@ -29,4 +29,4 @@ jobs:
     - name: Send greeting
    
 #       run: echo "DISTRIBUTION ${{ secrets.DISTRIBUTION_ID_DEV }}"
-      run: echo DISTRIBUTION ${{ secrets[format('DISTRIBUTION_ID_{0}', ENV)] }} BRANCH NAME $ENV
+      run: echo DISTRIBUTION ${{ secrets[format('DISTRIBUTION_ID_{$ENV}')] }} BRANCH NAME $ENV
