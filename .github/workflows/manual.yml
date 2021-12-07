@@ -29,7 +29,7 @@ jobs:
           done
          
     - name: Send DEV
-      if: ENV === 'dev'
+      if: echo ENV === 'dev'
       shell: bash
       env:
          ENVIRONMENT: ${{ ENV }}  
