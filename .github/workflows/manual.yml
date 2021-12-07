@@ -19,8 +19,17 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    - uses: actions/checkout@v2
+    - name: A) Read Configuration
+      shell: bash
+      run: |
+         ENV=${GITHUB_REF/refs\/heads\//}
+         for NAME in ENV
+         do echo "$NAME=${!NAME}" >> $GITHUB_ENV
+         done
+    
     # Runs a single command using the runners shell
     - name: Send greeting
    
 #       run: echo "DISTRIBUTION ${{ secrets.DISTRIBUTION_ID_DEV }}"
-      run: echo DISTRIBUTION ${{ secrets[format('DISTRIBUTION_ID_{0}', 'dev')] }}
+      run: echo DISTRIBUTION ${{ secrets[format('DISTRIBUTION_ID_{0}', ENV)] }}
