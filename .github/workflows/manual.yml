@@ -29,7 +29,7 @@ jobs:
           done
          
     - name: Send DEV
-      if: echo ENV === 'dev'
+      if: ${GITHUB_REF/refs\/heads\//} == 'dev'
       shell: bash
       env:
          ENVIRONMENT: ${{ ENV }}  
