@@ -23,4 +23,4 @@ jobs:
     - name: Send greeting
    
 #       run: echo "DISTRIBUTION ${{ secrets.DISTRIBUTION_ID_DEV }}"
-      run: DISTRIBUTION ${{ secrets[format('DISTRIBUTION_ID_{0}', 'dev')] }}
+      run: echo DISTRIBUTION ${{ secrets[format('DISTRIBUTION_ID_{0}', 'dev')] }}
