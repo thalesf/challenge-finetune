@@ -28,7 +28,13 @@ jobs:
           do echo "$NAME=${!NAME}" >> $GITHUB_ENV
           done
          
-    # Runs a single command using the runners shell
+    - name: Send DEV
+      if: ENV === 'dev'
+      shell: bash
+      env:
+         ENVIRONMENT: ${{ ENV }}  
+      run: echo DISTRIBUTION 2 ${{ secrets[format('DISTRIBUTION_ID_{0}', env.ENVIRONMENT)] }} BRANCH $ENV
+      
     - name: Send greeting
       shell: bash
       env:
