@@ -21,6 +21,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: A) Read Configuration
+      id: vars 
       shell: bash
       run: |
           ENV=${GITHUB_REF/refs\/heads\//}
@@ -32,6 +33,6 @@ jobs:
     # Runs a single command using the runners shell
     - name: Send greeting
       env:
-         ENVIRONMENT: $ENV  
+         ENVIRONMENT: DEV 
       run: echo DISTRIBUTION 2 ${{ secrets[format('DISTRIBUTION_ID_{0}', env.ENVIRONMENT)] }} BRANCH $ENV
 
