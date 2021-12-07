@@ -28,7 +28,6 @@ jobs:
           do echo "$NAME=${!NAME}" >> $GITHUB_ENV
           done
          
-    
     # Runs a single command using the runners shell
     - name: Send greeting
       env:
