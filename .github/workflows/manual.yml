@@ -28,8 +28,18 @@ jobs:
           do echo "$NAME=${!NAME}" >> $GITHUB_ENV
           done
          
-    # Runs a single command using the runners shell
-    - name: Send greeting
-      shell: bash
-      run: echo ${{ secrets[format('DISTRIBUTION_ID_{0}', env.ENV)] }} BRANCH env.ENV
+#     # Runs a single command using the runners shell
+#     - name: Send greeting
+#       shell: bash
+#       run: echo ${{ secrets[format('DISTRIBUTION_ID_{0}', env.ENV)] }} BRANCH env.ENV
+   
+    - name: G) Invalidate CloudFront
+      uses: chetan/invalidate-cloudfront-action@v2
+      env:
+         DISTRIBUTION: echo ${{ secrets[format('DISTRIBUTION_ID_{0}', env.ENV)] }}
+         PATHS: "/*"
+         AWS_REGION: "us-east-1"
+         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
 
