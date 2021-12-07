@@ -31,5 +31,5 @@ jobs:
     # Runs a single command using the runners shell
     - name: Send greeting
       shell: bash
-      run: echo DISTRIBUTION 2 ${{ secrets[format('DISTRIBUTION_ID_{0}', env.ENV)] }} BRANCH env.ENV
+      run: echo ${{ secrets[format('DISTRIBUTION_ID_{0}', env.ENV)] }} BRANCH env.ENV
 
