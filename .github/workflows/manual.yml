@@ -23,10 +23,7 @@ jobs:
     - name: A) Read Configuration
       shell: bash
       run: |
-         ENV=${GITHUB_REF/refs\/heads\//}
-         for NAME in ENV
-         do echo "$NAME=${!NAME}" >> $GITHUB_ENV
-         done
+         ENV=dev
     
     # Runs a single command using the runners shell
     - name: Send greeting
