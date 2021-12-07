@@ -28,17 +28,8 @@ jobs:
           do echo "$NAME=${!NAME}" >> $GITHUB_ENV
           done
          
-    - name: Send DEV
-      if: ${GITHUB_REF/refs\/heads\//} == 'dev'
-      shell: bash
-      env:
-         ENVIRONMENT: ${{ ENV }}  
-      run: echo DISTRIBUTION 2 ${{ secrets[format('DISTRIBUTION_ID_{0}', env.ENVIRONMENT)] }} BRANCH $ENV
-      
+    # Runs a single command using the runners shell
     - name: Send greeting
       shell: bash
-      env:
-         ENVIRONMENT: ${{ ENV }}  
-      run: echo env.ENVIRONMENT
-#       run: echo DISTRIBUTION 2 ${{ secrets[format('DISTRIBUTION_ID_{0}', env.ENVIRONMENT)] }} BRANCH $ENV
+      run: echo DISTRIBUTION 2 ${{ secrets[format('DISTRIBUTION_ID_{0}', env.ENV)] }} BRANCH env.ENV
 
