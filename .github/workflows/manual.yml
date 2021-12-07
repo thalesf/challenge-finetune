@@ -33,6 +33,6 @@ jobs:
     # Runs a single command using the runners shell
     - name: Send greeting
       env:
-         ENVIRONMENT: DEV 
+         ENVIRONMENT: ${ENV} 
       run: echo DISTRIBUTION 2 ${{ secrets[format('DISTRIBUTION_ID_{0}', env.ENVIRONMENT)] }} BRANCH $ENV
 
