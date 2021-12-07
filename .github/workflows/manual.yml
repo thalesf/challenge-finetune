@@ -24,6 +24,7 @@ jobs:
       shell: bash
       run: |
          ENV=dev
+         
     
     # Runs a single command using the runners shell
     - name: Send greeting
