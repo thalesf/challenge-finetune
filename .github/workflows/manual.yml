@@ -15,7 +15,7 @@ jobs:
   # This workflow contains a single job called "greet"
   greet:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -34,6 +34,7 @@ jobs:
 #       run: echo ${{ secrets[format('DISTRIBUTION_ID_{0}', env.ENV)] }} BRANCH env.ENV
    
     - name: G) Invalidate CloudFront
+      shell: bash
       run: aws cloudfront create-invalidation --distribution-id E1NK5WNQ5L043S --paths "/*"
 #       run: aws --no-cli-pager --profile invalidate-cloudfront-action cloudfront create-invalidation --distribution-id E1NK5WNQ5L043S
 
