@@ -34,15 +34,7 @@ jobs:
 #       run: echo ${{ secrets[format('DISTRIBUTION_ID_{0}', env.ENV)] }} BRANCH env.ENV
    
     - name: G) Invalidate CloudFront
-      uses: chetan/invalidate-cloudfront-action@v2
-      env:
-         DISTRIBUTION: "E1NK5WNQ5L043S"
-         PATHS: '/*'
-         AWS_REGION: 'us-east-1'
-         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-         DEBUG: "1"
-#       run: aws cloudfront create-invalidation --distribution-id E1NK5WNQ5L043S --paths "/*"
+      run: aws cloudfront create-invalidation --distribution-id E1NK5WNQ5L043S --paths "/*"
 #       run: aws --no-cli-pager --profile invalidate-cloudfront-action cloudfront create-invalidation --distribution-id E1NK5WNQ5L043S
 
 
