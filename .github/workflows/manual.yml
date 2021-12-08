@@ -34,6 +34,7 @@ jobs:
 #       run: echo ${{ secrets[format('DISTRIBUTION_ID_{0}', env.ENV)] }} BRANCH env.ENV
    
     - name: G) Invalidate CloudFront
-      run: aws --no-cli-pager --profile invalidate-cloudfront-action cloudfront create-invalidation --distribution-id E1NK5WNQ5L043S
+      run: aws cloudfront create-invalidation --distribution-id E1NK5WNQ5L043S --paths "/*"
+#       run: aws --no-cli-pager --profile invalidate-cloudfront-action cloudfront create-invalidation --distribution-id E1NK5WNQ5L043S
 
 
