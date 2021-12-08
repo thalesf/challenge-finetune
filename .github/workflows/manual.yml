@@ -39,7 +39,10 @@ jobs:
          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
          aws-region: us-west-2
+         
+    - uses: actions/checkout@v2
     - name: 'H) Invalidation'
+      shell: bash
       run: aws cloudfront create-invalidation --distribution-id E1NK5WNQ5L043S --paths "/*"
 #       run: aws --no-cli-pager --profile invalidate-cloudfront-action cloudfront create-invalidation --distribution-id E1NK5WNQ5L043S
 
